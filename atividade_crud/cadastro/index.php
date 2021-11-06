@@ -10,7 +10,8 @@
                 <h2>Cadastro</h2>
             </div>
             <div class="card-body">
-                <form method="post" action="">
+                <form method="post" action="./acoes.php">
+                    <input name="acao" type="hidden" value="inserir">
                     <input class="form-control" type="text" placeholder="Digite o nome" name="nome" id="nome">
                     <br />
                     <input class="form-control" type="text" placeholder="Digite o sobrenome" name="sobrenome" id="sobrenome">

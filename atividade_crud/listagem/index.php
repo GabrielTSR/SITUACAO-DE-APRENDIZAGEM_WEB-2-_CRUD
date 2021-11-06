@@ -1,5 +1,14 @@
 <?php
+    session_start();
+
+    // if (isset($_SESSION['usuarioId'])) {
+
     include('../componentes/header.php');
+    require('../database/conexao.php');
+
+    $sql = "SELECT * FROM tbl_pessoa";
+
+    $resultado = mysqli_query($conexao, $sql);
 ?>
 
 <div class="container">
@@ -20,12 +29,16 @@
     </thead>
 
     <tbody>
+
+        <?php
+            while($pessoa = mysqli_fetch_array($resultado)):
+        ?>
             <tr>
-                <th>1</th>
-                <th>TESTE DE NOME</th>
-                <th>TESTE DE SOBRENOME</th>
-                <th>TESTE DE EMAIL</th>
-                <th>TESTE DE CELULAR</th>
+                <th><?=$pessoa['cod_pessoa']?></th>
+                <th><?=$pessoa['nome']?></th>
+                <th><?=$pessoa['sobrenome']?></th>
+                <th><?=$pessoa['email']?></th>
+                <th><?=$pessoa['celular']?></th>
                 <th>
                     <button class="btn btn-warning">Editar</button>
 
@@ -36,6 +49,9 @@
                     
                 </th>
             </tr>
+        <?php
+            endwhile;
+        ?>
     </tbody>
 
     </table>
@@ -43,5 +59,8 @@
 </div>
 
 <?php
+    // } else{
+    //     echo('USUÁRIO NÃO AUTENTICADO');
+    // }
     include('../componentes/footer.php');
 ?>

@@ -4,6 +4,10 @@
     // if (isset($_SESSION['usuarioId'])) {
 
     include('../componentes/header.php');
+    ?>
+
+    <?php
+    
     require('../database/conexao.php');
 
     $sql = "SELECT * FROM tbl_pessoa";
@@ -32,6 +36,8 @@
 
         <?php
             while($pessoa = mysqli_fetch_array($resultado)):
+                
+                $cod_pessoa = $pessoa['cod_pessoa'];
         ?>
             <tr>
                 <th><?=$pessoa['cod_pessoa']?></th>
@@ -40,10 +46,11 @@
                 <th><?=$pessoa['email']?></th>
                 <th><?=$pessoa['celular']?></th>
                 <th>
-                    <button class="btn btn-warning">Editar</button>
+                    <button onclick='javascript:window.location.href = "../cadastro/editar.php?cod_pessoa=<?=$cod_pessoa?>" ' class="btn btn-warning">Editar</button>
 
-                    <form action="" method="post" style="display: inline;">
-                        <input type="hidden" name="id" value="">
+                    <form action="../cadastro/acoes.php" method="POST" style="display: inline;">
+                        <input type="hidden" name="cod_pessoa" value="<?=$cod_pessoa?>">
+                        <input type="hidden" name="acao" value="deletar">
                         <button class="btn btn-danger">Excluir</button>
                     </form>
                     

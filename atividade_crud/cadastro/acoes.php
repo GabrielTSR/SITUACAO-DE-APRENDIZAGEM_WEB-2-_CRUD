@@ -55,29 +55,47 @@ switch ($_POST['acao']) {
 
         case 'deletar':
 
-            $categoriaID = $_POST['categoriaId'];
+            $cod_pessoa = $_POST["cod_pessoa"];
 
-            $sql = "DELETE FROM tbl_categoria WHERE id = $categoriaID";
+            $sql = "DELETE FROM tbl_pessoa WHERE cod_pessoa = $cod_pessoa";
 
             $resultado = mysqli_query($conexao, $sql);
 
-            header('location: index.php');
+            header('location: ../index.php');
 
             break;
 
         case 'editar':
 
-            $id = $_POST["id"];
-            $descricao = $_POST["descricao"];
+            //CHAMADA DA FUNÇÃO DE VALIDAÇÃO DE ERROS:
+        $erros = validaCampos();
 
-            $sql = "UPDATE tbl_categoria SET descricao = '$descricao' WHERE id = $id";
-            // echo $sql; exit;
-            
-            $resultado = mysqli_query($conexao, $sql);
+        //VERIFICAR SE EXISTEM ERROS:
+        if(count($erros) > 0){
+            $_SESSION["erros"] = $erros;
+            header('location: ../index.php');
+            exit();
+        }
 
-            header('location: index.php');
+        $cod_pessoa = $_POST["cod_pessoa"];
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"];
+        $email = $_POST["email"];
+        $celular = $_POST["celular"];
 
-            break;
+        $sql = "UPDATE tbl_pessoa SET 
+        nome = '$nome', 
+        sobrenome = '$sobrenome', 
+        email = '$email', 
+        celular = '$celular' 
+        WHERE cod_pessoa = $cod_pessoa";
+        // echo $sql; exit;
+        
+        $resultado = mysqli_query($conexao, $sql);
+
+        header('location: ../index.php');
+
+        break;
     
     default:
         # code...

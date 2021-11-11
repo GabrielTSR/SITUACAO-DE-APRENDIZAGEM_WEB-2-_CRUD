@@ -21,7 +21,7 @@
     </a>
 
 <?php
-    if (isset($_SESSION['idAdministrador'])):
+    if (isset($_SESSION['idSessao'])):
 ?>
 
     <ul class="navbar-nav mr-auto">

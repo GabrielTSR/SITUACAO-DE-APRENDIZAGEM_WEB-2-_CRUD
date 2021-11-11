@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if (isset($_SESSION['idAdministrador'])) {
+    if (isset($_SESSION['idSessao'])) {
 
     include('../componentes/header.php');
     ?>

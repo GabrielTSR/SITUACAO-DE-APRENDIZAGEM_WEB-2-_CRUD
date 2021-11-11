@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    if (isset($_SESSION['idSessao'])) {
+
     include('../componentes/header.php');
 ?>
 
@@ -28,5 +31,11 @@
 
 
 <?php
+
+    } else{
+        header('location: ../login/index.php');
+        echo('USUÁRIO NÃO AUTENTICADO');
+    }
+
     include('../componentes/footer.php');
 ?>

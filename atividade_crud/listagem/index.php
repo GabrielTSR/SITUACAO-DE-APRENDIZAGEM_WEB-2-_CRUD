@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    // if (isset($_SESSION['usuarioId'])) {
+    if (isset($_SESSION['idAdministrador'])) {
 
     include('../componentes/header.php');
     ?>
@@ -66,8 +66,9 @@
 </div>
 
 <?php
-    // } else{
-    //     echo('USUÁRIO NÃO AUTENTICADO');
-    // }
+    } else{
+        header('location: ../login/index.php');
+        echo('USUÁRIO NÃO AUTENTICADO');
+    }
     include('../componentes/footer.php');
 ?>

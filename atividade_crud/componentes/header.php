@@ -20,6 +20,10 @@
         Cadastro
     </a>
 
+<?php
+    if (isset($_SESSION['idAdministrador'])):
+?>
+
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <a class="nav-link" href="../cadastro">Cadastrar</a>
@@ -36,10 +40,13 @@
 
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-            <a class="nav-link" href="../login/">Sair</a>
+            <a class="nav-link" href="../login/logout.php">Sair</a>
         </li>
-        
     </ul>
+
+    <?php
+        endif
+    ?>
     
 
 </nav>

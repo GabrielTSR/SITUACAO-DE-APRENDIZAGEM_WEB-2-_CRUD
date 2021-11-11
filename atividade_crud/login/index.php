@@ -1,6 +1,11 @@
 <?php
-    include('../componentes/header.php');
-    require('../database/conexao.php')
+    session_start();
+
+    if (isset($_SESSION['idSessao'])) {
+        header('location: ../');
+    } else {
+        include('../componentes/header.php');
+        require('../database/conexao.php');
 ?>
 
     <div class="container-geral">
@@ -11,8 +16,8 @@
                     <input type="hidden" name="acao" value="login">
                     
                     <div class="form-group">
-                        <label for="txt_usuario">E-MAIL</label>
-                        <input type="text" class="form-control" name="txt_email" id="txt_usuario" required>
+                        <label for="txt_usuario">USUÁRIO</label>
+                        <input type="text" class="form-control" name="txt_usuario" id="txt_usuario" required>
                     </div>
 
                     <div class="form-group">
@@ -24,6 +29,8 @@
                       <button class="btn btn-primary" type="submit">LOGAR</button>
                     </div>
 
+                    <a href="./cadastro.php">Não possui conta?</a>
+
                 </form>
 
             </div>
@@ -33,5 +40,7 @@
     </div>
 
 <?php
+    }
+
     include('../componentes/footer.php');
 ?>
